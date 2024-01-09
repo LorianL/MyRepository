@@ -1,0 +1,10 @@
+Variabeln:
+
+
+Algorithms:
+
+Hauptschritte:
+	1) Initialisierung der Klassen und Variabeln
+	2) Implemenierung des Zwiebelalgorithmus:
+		a) Erstellung des ersten Zwiebelrings
+			I) Finde den Punkt der am weitesten vom Mittelpunkt entfernt ist.

@@ -1,0 +1,51 @@
+Needed Proves:
+1) Prove that the Onion Algorithm find in simple cases always a good answer
+2) Prove that the success rate improves as the convex-shapes have more edges
+3) Prove that every inner-Rest has a high probability to be integrated if less than quadrilateral
+
+
+
+
+Concept Ideas:
+
+1) inner-Rest Integrating_Algorithm
+2) find shortest Path
+
+
+ToDo:
+
+1)Implement Optimizing_Function
+2) Implement Correcting_Algorithm [Easy Version]
+3) Crossing_algorithm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Possibility to improve the Algorithm:
+
+1) Implement Correcting_Algorithm [Effective Version]
+2) Implement Integrating_Algorithm for the Remaining Points of the Correcting_Algorithm
+3) Implement recursive Class behavior
+
+
+Possible improvements in runtime
