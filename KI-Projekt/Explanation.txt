@@ -1,7 +1,7 @@
 The Goal of this Ai Project is to deliver a "proof of concept" for an Ai which is capable of predicting if the price in X hours is higher or lower than the current price.
 The underlying concept emphasizes that the model finds it easier to learn and output a binary choice than to generate an actual numerical price value.
 
-I've experimented with various model structures, and so far, the RNN has shown the most promising results. 
+I've experimented with various model structures, and so far, the LSTM has shown the most promising results. 
 However, my next step is to customize a Transformer for this task, as Transformers are known for their superior ability to identify patterns within a series of data.
 
 I've been training the model using one-minute intervals of Bitcoin prices. 
