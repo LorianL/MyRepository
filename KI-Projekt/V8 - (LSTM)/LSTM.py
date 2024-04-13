@@ -296,37 +296,34 @@ def preprocessing(df):
     
     return np.array(sequential_data)
 
-df = get_data()
-train_df,valid_df = divide_df(df)
-train_data = preprocessing(train_df)
-valid_data = preprocessing(valid_df)
-print(f"train_data: {len(train_data)} validation:{len(valid_data)} ")
-
-
-
-
-
-#------------------------------------------------------------------------------
-
 class CustomDataset(Dataset):
-    def __init__(self, data):
-        self.data = data
+        def __init__(self, data):
+            self.data = data
 
-    def __len__(self):
-        return len(self.data)
+        def __len__(self):
+            return len(self.data)
 
-    def __getitem__(self, index):
-        array, target = self.data[index]
-        return torch.from_numpy(array), torch.tensor(target, dtype=torch.float32)
+        def __getitem__(self, index):
+            array, target = self.data[index]
+            return torch.from_numpy(array), torch.tensor(target, dtype=torch.float32)
+#------------------------------------------------------------------------------
+if True:
+    df = get_data()
+    train_df,valid_df = divide_df(df)
+    train_data = preprocessing(train_df)
+    valid_data = preprocessing(valid_df)
+    print(f"train_data: {len(train_data)} validation:{len(valid_data)} ")
 
-transform = Compose([ToTensor()])
 
-train_dataset = CustomDataset(train_data)
-test_dataset = CustomDataset(valid_data)
-train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
-test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=True)
 
-x,y = next(iter(train_loader))
+    #transform = Compose([ToTensor()])
+
+    train_dataset = CustomDataset(train_data)
+    test_dataset = CustomDataset(valid_data)
+    train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
+    test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=True)
+
+    x,y = next(iter(train_loader))
 #print(x, y)
 
 #Model
@@ -569,6 +566,21 @@ def plot_outputs(epoch=-1, showing = False, loader_name = test_loader):
 
         plt.clf()
 
+def plot_weights():
+    all_weights = model.state_dict()[f"fc1.weight"].view(-1).tolist()
+
+    bin_width = 0.01
+    num_bins = int(1 / bin_width)
+        
+    counts, bins, _ = plt.hist(all_weights, bins=np.linspace(0, 1, num=num_bins + 1), rwidth=0.8)
+        
+    plt.bar(bins[:-1], counts, width=bin_width, align='edge', edgecolor='black')
+    plt.ylabel('Anzahl der Elemente')
+    #plt.savefig(f"V8 - (LSTM)/Graphs/LossDistribution-Epoch{epoch+1}.png")
+    plt.show()
+
+    #plt.clf()
+
 def print_information(model):
     # Zähle die Gesamtzahl der Parameter im Modell
     total_params = sum(p.numel() for p in model.parameters())
@@ -605,10 +617,12 @@ if __name__ == "__main__":
     print_information(model)
     highest_acc = 0
     best_model = None
-    weight_decay_values = [0.9,0.9,0.9,0.9,0.9,0.9] #,0.55,0.3
+    weight_decay_values = [] #,0.55,0.3     0.9,0.9,0.9,0.9,0.9,0.9
+    print_weights_state()
     for epoch in range(num_epoch):
         
         if epoch % 5 == 0:
+            plot_weights()
             if len(weight_decay_values) != 0:
                 dropout_features_prob = weight_decay_values.pop(0)
                 print(f"New Feature Dropout Probability = {dropout_features_prob}")

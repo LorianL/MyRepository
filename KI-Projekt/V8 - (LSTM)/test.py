@@ -4,7 +4,11 @@ import torch
 
 t = torch.ones(3,4,12)
 
-print(t)
+print(t.view(-1).tolist)
+
+
+
+"""print(t)
 
 
 
@@ -27,9 +31,12 @@ def dropout_features(input_tensor):
         input_tensor[:,:,f] = t0
 
     return input_tensor
-
+    
+   
 
 
 print(dropout_features(t))
+ 
+    """
 
 

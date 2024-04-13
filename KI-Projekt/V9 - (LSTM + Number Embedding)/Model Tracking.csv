@@ -1,0 +1,9 @@
+Trail Run 1,,,,,,,,,,,,
+Conditions:,,,,,,,,,,,,
+SEQ_LEN = 20,,Model Num:,Enc. Length,Tok. Length,hiddensize,num_layers,exp.factor,emb_drop,lstm_drop,drop,Total Params,Top Acc
+FUTURE_PERIOD_PREDICT = 20,,1,200,20,100,1,2,0,0,0.2,93201,52.3798%
+BATCH_SIZE = 512,,2,300,30,100,1,2,0,0,0.2,102201,52.6112%
+NUM_EPOCHS = 10,,3,100,10,100,1,2,0,0,0.2,86201,52.3106%
+,,4,100,10,100,3,2,0,0,0.2,247801,51.9972%
+,,5,150,25,100,3,2,"0,3","0,3",0.3,256551,52.7260%
+,,,100,20,100,1,2,"0,1","0,3",0.2,,52.1776%
