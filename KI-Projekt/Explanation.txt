@@ -8,4 +8,7 @@ I've been training the model using one-minute intervals of Bitcoin prices.
 Despite trying other cryptocurrencies, I've found that Bitcoin produces the best outcomes due to its higher liquidity, resulting in less unpredictable price movements.
 
 
+The simple goal of the model is to predict if the price either goes up or down at the end of a give period of time which will be called FUTURE_PERIOD_TO_PREDICT in the code.
+
+
 
